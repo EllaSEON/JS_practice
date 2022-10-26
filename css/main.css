@@ -1,4 +1,4 @@
-/* common 공통적으로 영향을 미치는 선택자와 css */
+/* ★common 공통적으로 영향을 미치는 선택자와 css★ */
 
 body{
   color:#333;
@@ -11,13 +11,16 @@ body{
 img{
   display:block;
 }
+a{
+  text-decoration:none;
+}
 
-/* HEADER */
+/* ★HEADER★ */
 header{
-  background:royalblue;
+  background:#f6f4f0;
+  border-bottom:1px solid #c8c8c8;
 }
 header .inner{
-  background:orange;
   width:1100px;
   height:120px;
   margin: 0 auto;
@@ -30,5 +33,90 @@ header .logo{
   position:absolute;
   top:0px;
   bottom:0px;
+  left:0;
   margin:auto;
+}
+
+header .sub-menu{
+  position:absolute;
+  top:10px;
+  right:0;
+  display:flex;
+}
+
+header .sub-menu ul.menu{
+  /* Arial 폰트는 대부분 브라우저에 있음. 만약 없으면 sans-serif */
+  font-family: Arial, sans-serif; 
+  display:flex;
+}
+
+header .sub-menu ul.menu li{
+  position:relative;
+}
+/* before 가상요소는 inline값 */
+header .sub-menu ul.menu li::before{
+  content:"";
+  /* display:block;  position:absolute를 쓰면 인라인요소가 블럭으로 바뀌기에 이부분은 지워도 됨
+  가상요소선택자는 인라인요소임 */
+  width:1px;
+  height:12px;
+  background:#e5e5e5;
+  /* 배치해야함 */
+  position:absolute;
+  top:0;
+  bottom:0;
+  margin:auto;
+}
+header .sub-menu ul.menu li:first-child::before{
+  display:none;
+}
+header .sub-menu ul.menu li a{
+  font-size:12px;
+  /* a링크의 글씨가 만약 작아졌다면... 간격이 넓어지는데 이곳 클릭하면 링크로 안넘어가니까 글자사이의 간격을 줄일 필요가 있다. 그때 padding과 block을 씀 */
+  padding:11px 16px;
+  /* block 요소는 가로사이즈를 최대한 늘어나려고함 */
+  display:block;
+  color:#656565;
+
+  
+}
+header .sub-menu ul.menu li a:hover{
+  color:#000;
+}
+
+header .sub-menu .search{
+  height:34px;
+  position:relative;
+}
+header .sub-menu .search input{
+  width:36px;
+  height:34px;
+  padding:4px 10px;
+  border: 1px solid #ccc;
+  box-sizing:border-box;
+  border-radius:5px;
+  outline:none;
+  /* 브라우저마다 input 요소에 제공하는 색상 달라서 추가 */
+  background:#fff;
+  color:#777;
+  font-size:12px;
+  transition: width 0.4s;
+}
+/* input요소에 focus 되면 늘어나셈 */
+header .sub-menu .search input:focus{
+  width:190px;
+  border-color:#669900;
+}
+header .sub-menu .search .material-icons{
+  height:24px;
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:5px;
+  margin:auto;
+  /* transition 은 요소가 변하기 전에 적용 */
+  transition: all .4s;
+}
+header .sub-menu .search.focused .material-icons{
+  opacity:0;
 }
