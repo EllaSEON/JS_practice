@@ -14,17 +14,24 @@ img{
 a{
   text-decoration:none;
 }
+.inner{
+  width:1100px;
+  margin: 0 auto;
+  /* 위치상의 부모가 될수있는 기준 */
+  position:relative;
+}
 
 /* ★HEADER★ */
 header{
   background:#f6f4f0;
   border-bottom:1px solid #c8c8c8;
 }
-header .inner{
-  width:1100px;
+header > .inner{
   height:120px;
-  margin: 0 auto;
+  /* common 에 있는 .inner와 겹치므로 주석처리 */
+  /* margin: 0 auto;
   position:relative;
+  width:1100px; */
   
 }
 header .logo{
@@ -125,6 +132,7 @@ header .main-menu{
   position:absolute;
   bottom:0;
   right:0;
+  /* 메인메뉴 호버하면서 맨 위로 나와야하니까 z-index를 주었음 */
   z-index:1;
 }
 header .main-menu .item{
@@ -135,6 +143,7 @@ header .main-menu .item .item__name{
   font-family:Arial,sans-serif;
   font-size:13px;
 }
+/* item__name이 아니라 item에 hover하는 이유는 메인메뉴뿐만아니라 드롭다운메뉴에도 영향이 가야해서 아이템컨텐츠가 화면에 나와야함 */
 header .main-menu .item:hover .item__name{
   background:#2c2a29;
   color: #669900;
@@ -143,6 +152,7 @@ header .main-menu .item:hover .item__name{
 header .main-menu .item .item__contents{
   width:100%;
   /* 뷰포트를 기준으로 배치 */
+  /* top,bottom 속성을 사용하지 않아 수직 위치 값이 없다면, 요소의 원래 위치를 그대로 사용한다. 만약, position:absolute로 했다면, 위치상 부모 요소를 기준으로 하므로 화면의 뷰포트 좌우 끝까지 늘어날수 없게됨 */
   position:fixed;
   left:0;
   display:none;
@@ -151,8 +161,28 @@ header .main-menu .item:hover .item__contents{
   display:block;
 }
 header .main-menu .item .item__contents .contents__menu{
-  background:red;
-  height:200px;
+  background:#2c2a29;
+  /* 컨텐츠를 넣으면 height은 굳이 필요없어. height 값을 안넣으면 컨텐츠 크기만큼 늘어남 */
+  /* height:200px; */
+}
+/*  > 바로 자식에 해당하는 선택자 */
+header .main-menu .item .item__contents .contents__menu > ul{
+  display:flex;
+  padding:20px 0;
+}
+header .main-menu .item .item__contents .contents__menu > ul>li{
+  width:220px;
+}
+header .main-menu .item .item__contents .contents__menu > ul>li h4{
+  padding:3px 0 12px 0;
+  font-size:14px;
+  color:#fff;
+}
+header .main-menu .item .item__contents .contents__menu > ul>li ul li{
+  padding:5px 0;
+  font-size:12px;
+  color:#999;
+  cursor:pointer;
 }
 header .main-menu .item .item__contents .contents__texture{
   background:orange;
