@@ -1,2 +1,1 @@
-# JS_practice
-자바스크립트 실습물들
+# Fastcampus_Starbuks 실습 페이지
